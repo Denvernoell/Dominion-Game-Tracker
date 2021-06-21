@@ -31,12 +31,14 @@ player_scores = {}
 for player in my_players:
     player_scores[player] = st.number_input(f"{player} Score", step=1)
 
+if len(my_players) > 1:
 
-player_tiebreakers = {}
-score_check = sorted(player_scores.items(), key=lambda x: x[1], reverse=True)
-if score_check[0][1] == score_check[1][1]:
-    for player in my_players:
-        player_tiebreakers[player] = st.checkbox(f"{player} Tiebreaker")
+    player_tiebreakers = {}
+    score_check = sorted(player_scores.items(),
+                         key=lambda x: x[1], reverse=True)
+    if score_check[0][1] == score_check[1][1] and score_check[0][1] != 0:
+        for player in my_players:
+            player_tiebreakers[player] = st.checkbox(f"{player} Tiebreaker")
 
 # st.write(player_scores)
 
